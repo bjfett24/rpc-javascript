@@ -55,8 +55,55 @@ function playRound(compChoice, humanChoice) {
     }
 }
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
 
-playRound(computerSelection, humanSelection);
+
+// playRound(computerSelection, humanSelection);
+
+function playGame(numOfRounds) {
+    let humanScore = 0;
+
+    let computerScore = 0;
+
+    function playRound(humanChoice, compChoice) {
+        compChoice = compChoice.toLowerCase()
+        humanChoice = humanChoice.toLowerCase()
+        if (compChoice == humanChoice) {
+            console.log(`Draw! ${compChoice} and ${humanChoice} are equal!`);
+        } else if (compChoice == "rock" && humanChoice == "paper") {
+            ++humanScore;
+            console.log("You win! Your paper beats rock.");
+        } else if (compChoice == "paper" && humanChoice == "rock") {
+            ++computerScore;
+            console.log("You lose! Paper beats your rock.");
+        } else if (compChoice == "paper" && humanChoice == "scissors") {
+            ++humanScore;
+            console.log("You win! Your scissors beats paper.");
+        } else if (compChoice == "scissors" && humanChoice == "paper") {
+            ++computerScore;
+            console.log("You lose! Scissors beats your paper.");
+        } else if (compChoice == "rock" && humanChoice == "scissors") {
+            ++computerScore;
+            console.log("You lose! Rock beats your scissors.");
+        } else if (compChoice == "scissors" && humanChoice == "rock") {
+            ++humanScore;
+            console.log("You win! Your rock beats scissors");
+        }
+    }
+
+    
+    for (let i = 0; i < numOfRounds; i++)
+    
+        humanSelection = getHumanChoice();
+        computerSelection = getComputerChoice();
+
+        playRound(humanSelection, computerSelection);
+
+    console.log(`Human Score: ${humanScore}, Computer Score: ${computerScore}`)
+    return [humanScore, computerScore]
+
+    
+
+    
+
+}
 
