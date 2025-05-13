@@ -1,16 +1,26 @@
 function getComputerChoice() {
-    randomNum = Math.random
+    randomNum = Math.random();
     if (randomNum >= 0 && randomNum < (1 / 3)) {
-        console.log("rock")
+        return "rock";
     } else if (randomNum >= (1 / 3) && randomNum < (2 / 3)) {
-        console.log("paper")
+        return "paper";
     } else if (randomNum >= (2 / 3) && randomNum <= (1)) {
-        console.log("scissors")
+        return "scissors";
     }
 }
 
-getComputerChoice()
+// console.log(getComputerChoice())
 
-getComputerChoice()
+function getHumanChoice() {
+    choice = prompt("Choose 'r' for rock, 'p' for paper, or 's' for scissors")
 
-getComputerChoice()
+    if (choice == "r") {
+        return "rock";
+    } else if (choice == "p") {
+        return "paper";
+    } else {
+        return "scissors";
+    }
+}
+
+console.log(getHumanChoice())
