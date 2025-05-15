@@ -75,59 +75,71 @@ function playGame(numOfRounds) {
 }
 
 const body = document.querySelector("body");
-
-const topScreen = document.createElement("div");
-const bottomScreen = document.createElement("div");
-
-const rockButton = document.createElement("button");
-const paperButton = document.createElement("button");
-const scissorsButton = document.createElement("button");
-
-const scoreBoard = document.createElement("div");
-
-const yourSide = document.createElement("div");
-const yourHeader = document.createElement("div");
-const yourScoreDisplay = document.createElement("div");
-
-const compSide = document.createElement("div");
-const compHeader = document.createElement("div");
-const compScoreDisplay = document.createElement("div");
-
-
 body.setAttribute("style", "display: flex, justify-content: space-between, flex-direction: column;");
 
+
+const topScreen = document.createElement("div");
 topScreen.setAttribute("style", "display: flex, flex: 2; justify-content: space-between;")
-bottomScreen.setAttribute("style", "display: flex, flex: 1; justify-content: space-between;")
-
-rockButton.addEventListener('click', playRound("rock", getComputerChoice()));
-paperButton.addEventListener('click', playRound("paper", getComputerChoice()));
-scissorsButton.addEventListener('click', playRound("scissors", getComputerChoice()));
-
-scoreBoard.setAttribute("style", "display: flex; justify-content: space-between; border: 3px solid black");
-
-yourSide.setAttribute("style", "display: flex; flex-direction, column; justify-content: space-between; color: black; background-color: white; border: 3px solid black;")
-yourHeader.textContent = "Your Score";
-
-compSide.setAttribute("style", "display: flex; flex-direction, column; justify-content: space-between; color: black; background-color: white; border: 3px solid black;")
-compHeader.textContent = "Computer Score"
-
-//  APPENDS GO AT THE END! //
-
 body.appendChild(topScreen);
+
+const bottomScreen = document.createElement("div");
+bottomScreen.setAttribute("style", "display: flex, flex: 1; justify-content: space-between;")
 body.appendChild(bottomScreen);
 
+const rockButton = document.createElement("button");
+rockButton.addEventListener('click', playRound("rock", getComputerChoice()));
 topScreen.appendChild(rockButton);
+
+const paperButton = document.createElement("button");
+paperButton.addEventListener('click', playRound("paper", getComputerChoice()));
 topScreen.appendChild(paperButton);
+
+const scissorsButton = document.createElement("button");
+scissorsButton.addEventListener('click', playRound("scissors", getComputerChoice()));
 topScreen.appendChild(scissorsButton);
+
+const scoreBoard = document.createElement("div");
+scoreBoard.setAttribute("style", "display: flex; justify-content: space-between; border: 3px solid black");
 bottomScreen.appendChild(scoreBoard);
+
+const yourSide = document.createElement("div");
+yourSide.setAttribute("style", "display: flex; flex-direction, column; justify-content: space-between; color: black; background-color: white; border: 3px solid black;")
 scoreBoard.appendChild(yourSide);
+
+const compSide = document.createElement("div");
+compSide.setAttribute("style", "display: flex; flex-direction, column; justify-content: space-between; color: black; background-color: white; border: 3px solid black;")
 scoreBoard.appendChild(compSide);
 
+const yourHeader = document.createElement("div");
+yourHeader.textContent = "Your Score";
 yourSide.appendChild(yourHeader);
+
+const yourScoreDisplay = document.createElement("div");
 yourSide.appendChild(yourScoreDisplay);
 
+const compHeader = document.createElement("div");
+compHeader.textContent = "Computer Score"
 compSide.appendChild(compHeader);
+
+const compScoreDisplay = document.createElement("div");
 compSide.appendChild(compScoreDisplay);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
