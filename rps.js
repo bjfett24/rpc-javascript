@@ -38,22 +38,22 @@ function playRound(humanChoice) {
     if (compChoice == humanChoice) {
         results.textContent = `Draw! ${compChoice} and ${humanChoice} are equal!`;
     } else if (compChoice == "rock" && humanChoice == "paper") {
-        humanScore = ++humanScore;
+        ++yourScoreText.textContent;
         results.textContent = "You win! Your paper beats rock.";
     } else if (compChoice == "paper" && humanChoice == "rock") {
-        computerScore = ++computerScore;
+        ++compScoreText.textContent;
         results.textContent = "You lose! Paper beats your rock.";
     } else if (compChoice == "paper" && humanChoice == "scissors") {
-        humanScore = ++humanScore;
+        ++yourScoreText.textContent;
         results.textContent = "You win! Your scissors beats paper."
     } else if (compChoice == "scissors" && humanChoice == "paper") {
-        computerScore = ++computerScore;
+        ++compScoreText.textContent;
         results.textContent = "You lose! Scissors beats your paper."
     } else if (compChoice == "rock" && humanChoice == "scissors") {
-        computerScore = ++computerScore;
+        ++compScoreText.textContent
         results.textContent = "You lose! Rock beats your scissors."
     } else if (compChoice == "scissors" && humanChoice == "rock") {
-        humanScore = ++humanScore;
+        ++yourScoreText.textContent;
         results.textContent = "You win! Your rock beats scissors";
     }
 }
@@ -94,7 +94,7 @@ container.setAttribute("style", "height: 100%; display: flex; justify-content: s
 body.appendChild(container);
 
 const leftScreen = document.createElement("div");
-leftScreen.setAttribute("style", "padding: 70px; flex: 1; display: flex; justift-content: center; align-items: center;");
+leftScreen.setAttribute("style", "padding: 60px; flex: 1; display: flex; justift-content: center; align-items: center;");
 container.appendChild(leftScreen);
 
 const rightScreen = document.createElement("div");
@@ -105,22 +105,52 @@ const buttonBox = document.createElement("div");
 buttonBox.setAttribute("style", "gap: 24px; width: 100%; height: 100%; display: flex; flex: 2; justify-content: space-between; align-items: center; flex-direction: column;");
 leftScreen.appendChild(buttonBox);
 
-//Results must be initialized before button functions!!//
+//results must be initialized before button functions!!//
 const results = document.createElement("div");
+results.textContent = "Start!"
+
+const compScoreDisplay = document.createElement("div");
+compScoreDisplay.setAttribute("id", "compScoreDisplay");
+compScoreDisplay.setAttribute("style", "flex: 6; display: flex; flex: 1;");
+
+
+const yourScoreDisplay = document.createElement("div");
+yourScoreDisplay.setAttribute("style", "flex: 6; display: flex; flex: 1;");
+yourScoreDisplay.setAttribute("id", "yourScoreDisplay");
+
+
+
+const yourScoreText = document.createElement("div");
+yourScoreText.setAttribute("id", "yourScoreText");
+yourScoreText.setAttribute("style", "justify-content: space-between;");
+yourScoreText.textContent = 0
+
+const compScoreText = document.createElement("div");
+compScoreText.setAttribute("style", "justify-center: center;")
+compScoreText.setAttribute("id", "compScoreText");
+compScoreText.textContent = 0;
+
+
+const scores = [yourScoreText, compScoreText];
+for (score of scores) {
+    score.setAttribute("style", "font-weight: bold; font-size: 60px")
+}
+
+
 
 const rockButton = document.createElement("button");
 rockButton.textContent = "Rock";
-rockButton.addEventListener('click', playRound("rock"));
+rockButton.addEventListener('click', () => {playRound("rock")});
 buttonBox.appendChild(rockButton);
 
 const paperButton = document.createElement("button");
 paperButton.textContent = "Paper";
-paperButton.addEventListener('click', playRound("paper"));
+paperButton.addEventListener('click', () => {playRound("paper")});
 buttonBox.appendChild(paperButton);
 
 const scissorsButton = document.createElement("button");
 scissorsButton.textContent = "Scissors"
-scissorsButton.addEventListener('click', playRound("scissors"));
+scissorsButton.addEventListener('click', () => {playRound("scissors")});
 buttonBox.appendChild(scissorsButton);
 
 const buttons = [rockButton, paperButton, scissorsButton];
@@ -132,10 +162,15 @@ const scoreBoard = document.createElement("div");
 scoreBoard.setAttribute("style", "width: 70%; height: 85%; display: flex; flex-direction: column; justify-content: space-between; border: 3px solid black;");
 rightScreen.appendChild(scoreBoard);
 
+const upperBox = document.createElement("div");
+upperBox.setAttribute("id", "upperBox");
+upperBox.setAttribute("style", "width: 100%; display: flex; justify-content: center; align-text: center; flex: 3;");
+scoreBoard.appendChild(upperBox);
 
-results.setAttribute("style", "flex: 1;");
-results.textContent = ""
-scoreBoard.appendChild(results);
+//results is initialized earlier//
+results.setAttribute("id", "results");
+results.setAttribute("style", "text-align: center; font-size: 38px; display: flex; flex-direction: column; justify-content: center; align-items: center;");
+upperBox.appendChild(results);
 
 const lowerBox = document.createElement("div");
 lowerBox.setAttribute("style", "display: flex; justify-content: space-between; flex: 1;");
@@ -143,34 +178,29 @@ scoreBoard.appendChild(lowerBox);
 
 
 const yourSide = document.createElement("div");
-yourSide.setAttribute("style", "margin: 10px; width: 40%; display: flex; flex-direction: column; justify-content: space-between; color: black; background-color: white; border: 3px solid black;");
+yourSide.setAttribute("style", "margin: 10px; width: 40%; display: flex; flex-direction: column; justify-content: space-between; align-items: center; color: black; background-color: white; border: 3px solid black;");
 lowerBox.appendChild(yourSide);
 
 const compSide = document.createElement("div");
-compSide.setAttribute("style", "margin: 10px; width: 40%; display: flex; flex-direction, column; justify-content: space-between; color: black; background-color: white; border: 3px solid black;");
+compSide.setAttribute("style", "margin: 10px; width: 40%; display: flex; flex-direction: column; justify-content: space-between; align-items: center; color: black; background-color: white; border: 3px solid black;");
 lowerBox.appendChild(compSide);
 
 const yourHeader = document.createElement("div");
 yourHeader.textContent = "Your Score";
+yourHeader.setAttribute("style", "font-size: 24px; text-align: center; flex: 1")
 yourSide.appendChild(yourHeader);
-
-const yourScoreDisplay = document.createElement("div");
-yourSide.appendChild(yourScoreDisplay);
 
 const compHeader = document.createElement("div");
 compHeader.textContent = "Computer Score"
+compHeader.setAttribute("style", "font-size: 22px; text-align: center; flex: 1;")
 compSide.appendChild(compHeader);
 
-const compScoreDisplay = document.createElement("div");
+
+
+yourSide.appendChild(yourScoreDisplay);
 compSide.appendChild(compScoreDisplay);
-
-
-
-
-
-
-
-
+yourScoreDisplay.appendChild(yourScoreText);
+compScoreDisplay.appendChild(compScoreText);
 
 
 
