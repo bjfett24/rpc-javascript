@@ -99,7 +99,7 @@ const myHTML = document.documentElement;
 myHTML.setAttribute("style", "height: 100vh; margin: 0;");
 
 const body = document.querySelector("body");
-body.setAttribute("style", "height: 100%; margin: 0;");
+body.setAttribute("style", "height: 100%; margin: 0; background-color: rgb(3, 62, 0);");
 
 
 const container = document.createElement("div");
@@ -107,7 +107,7 @@ container.setAttribute("style", "height: 100%; display: flex; justify-content: s
 body.appendChild(container);
 
 const leftScreen = document.createElement("div");
-leftScreen.setAttribute("style", "padding: 60px; flex: 1; display: flex; justift-content: center; align-items: center;");
+leftScreen.setAttribute("style", "padding: 70px; flex: 1; display: flex; justift-content: center; align-items: center;");
 container.appendChild(leftScreen);
 
 const rightScreen = document.createElement("div");
@@ -116,11 +116,12 @@ container.appendChild(rightScreen);
 
 const buttonBox = document.createElement("div");
 buttonBox.setAttribute("style", "gap: 24px; width: 100%; height: 100%; display: flex; flex: 2; justify-content: space-between; align-items: center; flex-direction: column;");
+buttonBox.id = "buttonBox";
 leftScreen.appendChild(buttonBox);
 
 //results must be initialized before button functions!!//
 const results = document.createElement("div");
-results.textContent = "Start!"
+results.textContent = "Choose Rock, Paper, or Scissors"
 
 const compScoreDisplay = document.createElement("div");
 compScoreDisplay.setAttribute("id", "compScoreDisplay");
@@ -152,7 +153,7 @@ for (score of scores) {
 
 
 const scoreBoard = document.createElement("div");
-scoreBoard.setAttribute("style", "width: 70%; height: 85%; display: flex; flex-direction: column; justify-content: space-between; border: 3px solid black;");
+scoreBoard.setAttribute("style", "width: 70%; height: 85%; display: flex; flex-direction: column; justify-content: space-between;");
 rightScreen.appendChild(scoreBoard);
 
 
@@ -166,29 +167,76 @@ const middleBox = document.createElement("div");
 
 
 const rockButton = document.createElement("button");
-rockButton.textContent = "Rock";
 rockButton.addEventListener('click', () => {playRound("rock")});
 buttonBox.appendChild(rockButton);
 
 const paperButton = document.createElement("button");
-paperButton.textContent = "Paper";
 paperButton.addEventListener('click', () => {playRound("paper")});
 buttonBox.appendChild(paperButton);
 
 const scissorsButton = document.createElement("button");
-scissorsButton.textContent = "Scissors"
 scissorsButton.addEventListener('click', () => {playRound("scissors")});
 buttonBox.appendChild(scissorsButton);
 
 const buttons = [rockButton, paperButton, scissorsButton];
 for (b of buttons) {
-    b.setAttribute("style", "font-family: sans-serif; font-size: 84px; width: 400px; height: 250px; border: 3px solid black; border-radius: 10px");
+    b.setAttribute("style", "align-items: center; flex-direction: column; display: flex; justify-content: space-between; font-family: sans-serif; font-size: 84px; width: 400px; height: 250px; border: 3px solid black; border-radius: 10px");
 };
+
+const rockText = document.createElement("div");
+rockText.textContent = "Rock";
+rockText.style.flex = 1;
+rockButton.appendChild(rockText);
+
+const paperText = document.createElement("div");
+paperText.textContent = "Paper";
+paperText.style.flex = 1;
+paperButton.appendChild(paperText);
+
+const scissorsText = document.createElement("div");
+scissorsText.id = "scissorsText"
+scissorsText.textContent = "Scissors";
+scissorsText.style.fontSize = "60px";
+scissorsText.style.flex = 1;
+scissorsButton.appendChild(scissorsText);
+
+const rockImage = document.createElement("img");
+rockImage.setAttribute("src", "rock.png");
+rockImage.setAttribute("alt", "Rock");
+rockImage.style.width = "30%";
+rockImage.style.border = "5px solid black";
+rockImage.style.flex = 1;
+rockButton.appendChild(rockImage);
+
+const paperImage = document.createElement("img");
+paperImage.setAttribute("src", "paper.png");
+paperImage.setAttribute("alt", "Paper");
+paperImage.style.width = "50%";
+paperImage.style.flex = 1;
+paperButton.appendChild(paperImage);
+
+const scissorsImage = document.createElement("img");
+scissorsImage.src = "scissor.png";
+scissorsImage.alt = "Scissors";
+scissorsImage.style.width = "60%";
+scissorsImage.style.flex = 1;
+scissorsButton.appendChild(scissorsImage);
+
+rockButton.style.backgroundColor = 'rgb(110, 110, 110)';
+rockButton.style.color = 'white';
+
+paperButton.style.backgroundColor = 'rgb(255, 255, 255)';
+paperButton.style.color = 'rgb(3, 62, 0)';
+
+scissorsButton.style.backgroundColor = 'rgb(30, 23, 228)';
+scissorsButton.style.color = 'white';
+
+
 
 
 //results is initialized earlier//
 results.setAttribute("id", "results");
-results.setAttribute("style", "text-align: center; font-size: 38px; display: flex; flex-direction: column; justify-content: center; align-items: center;");
+results.setAttribute("style", "color: white; text-align: center; font-size: 38px; display: flex; flex-direction: column; justify-content: center; align-items: center;");
 upperBox.appendChild(results);
 
 const lowerBox = document.createElement("div");
