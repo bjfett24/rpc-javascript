@@ -56,6 +56,19 @@ function playRound(humanChoice) {
         ++yourScoreText.textContent;
         results.textContent = "You win! Your rock beats scissors";
     }
+
+    if (yourScoreText.textContent == 5 || compScoreText.textContent == 5) {
+        if (yourScoreText.textContent > compScoreText.textContent) {
+            middleBox.textContent = `You Won! Final Score: ${yourScoreText.textContent} to ${compScoreText.textContent}`;
+            middleBox.setAttribute("style", "display: flex; justify-content: space-between; align-items: center; font-size: 24px; background-color: green; color: white; border: 3px solid black; border-radius: 20px; text-align: center; flex: ; margin: 15px;");
+            scoreBoard.append(middleBox);
+        } else {
+            middleBox.textContent = `You Lost! Final Score: ${yourScoreText.textContent} to ${compScoreText.textContent}`
+            middleBox.setAttribute("style", "display: flex; justify-content: space-between; align-items: center; font-size: 24px; background-color: red; color: white; border: 3px solid black; border-radius: 20px; text-align: center; flex: 2; margin: 15px;");
+            scoreBoard.append(middleBox);
+        }
+        
+    }
 }
 
 function mainGame() {
@@ -138,6 +151,20 @@ for (score of scores) {
 
 
 
+const scoreBoard = document.createElement("div");
+scoreBoard.setAttribute("style", "width: 70%; height: 85%; display: flex; flex-direction: column; justify-content: space-between; border: 3px solid black;");
+rightScreen.appendChild(scoreBoard);
+
+
+
+const upperBox = document.createElement("div");
+upperBox.setAttribute("id", "upperBox");
+upperBox.setAttribute("style", "width: 100%; display: flex; justify-content: center; align-text: center; flex: 3;");
+scoreBoard.appendChild(upperBox);
+
+const middleBox = document.createElement("div");
+
+
 const rockButton = document.createElement("button");
 rockButton.textContent = "Rock";
 rockButton.addEventListener('click', () => {playRound("rock")});
@@ -158,14 +185,6 @@ for (b of buttons) {
     b.setAttribute("style", "font-family: sans-serif; font-size: 84px; width: 400px; height: 250px; border: 3px solid black; border-radius: 10px");
 };
 
-const scoreBoard = document.createElement("div");
-scoreBoard.setAttribute("style", "width: 70%; height: 85%; display: flex; flex-direction: column; justify-content: space-between; border: 3px solid black;");
-rightScreen.appendChild(scoreBoard);
-
-const upperBox = document.createElement("div");
-upperBox.setAttribute("id", "upperBox");
-upperBox.setAttribute("style", "width: 100%; display: flex; justify-content: center; align-text: center; flex: 3;");
-scoreBoard.appendChild(upperBox);
 
 //results is initialized earlier//
 results.setAttribute("id", "results");
