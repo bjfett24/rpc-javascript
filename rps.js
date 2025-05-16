@@ -60,11 +60,11 @@ function playRound(humanChoice) {
     if (yourScoreText.textContent == 5 || compScoreText.textContent == 5) {
         if (yourScoreText.textContent > compScoreText.textContent) {
             middleBox.textContent = `You Won! Final Score: ${yourScoreText.textContent} to ${compScoreText.textContent}`;
-            middleBox.setAttribute("style", "display: flex; justify-content: space-between; align-items: center; font-size: 24px; background-color: green; color: white; border: 3px solid black; border-radius: 20px; text-align: center; flex: ; margin: 15px;");
+            middleBox.setAttribute("style", "display: flex; justify-content: center; align-items: center; font-size: 36px; background-color: green; color: white; border: 3px solid black; border-radius: 20px; text-align: center; flex: 2; margin: 15px;");
             scoreBoard.append(middleBox);
         } else {
             middleBox.textContent = `You Lost! Final Score: ${yourScoreText.textContent} to ${compScoreText.textContent}`
-            middleBox.setAttribute("style", "display: flex; justify-content: space-between; align-items: center; font-size: 24px; background-color: red; color: white; border: 3px solid black; border-radius: 20px; text-align: center; flex: 2; margin: 15px;");
+            middleBox.setAttribute("style", "display: flex; justify-content: center; align-items: center; font-size: 36px; background-color: red; color: white; border: 3px solid black; border-radius: 20px; text-align: center; flex: 2; margin: 15px;");
             scoreBoard.append(middleBox);
         }
         
@@ -160,7 +160,7 @@ rightScreen.appendChild(scoreBoard);
 
 const upperBox = document.createElement("div");
 upperBox.setAttribute("id", "upperBox");
-upperBox.setAttribute("style", "width: 100%; display: flex; justify-content: center; align-text: center; flex: 3;");
+upperBox.setAttribute("style", "width: 100%; display: flex; justify-content: center; align-text: center; flex: 4;");
 scoreBoard.appendChild(upperBox);
 
 const middleBox = document.createElement("div");
